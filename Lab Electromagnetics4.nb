@@ -1,0 +1,1023 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35742,       1015]
+NotebookOptionsPosition[     32536,        906]
+NotebookOutlinePosition[     33666,        943]
+CellTagsIndexPosition[     33623,        940]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["E4: Introduction to Capacitors and the RC Circuit", "Title",
+ CellChangeTimes->{{3.6865728196089635`*^9, 3.6865728342962584`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Priyanka Makin
+Maya Fabrikant
+10/27/2016\
+\>", "Chapter",
+ CellChangeTimes->{{3.68657284670205*^9, 3.6865728658106346`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Section",
+ CellChangeTimes->{{3.686573016440611*^9, 3.68657302325283*^9}}],
+
+Cell["\<\
+In this lab we learned about capacitors and their capacitance and we \
+experimented with assembling resistor-capacitor (RC) circuits. We first \
+explored the effects of plate area and distance on the capacitance of a \
+capacitor. We learned that all capacitors have a stray capacitance that needs \
+to be taken into account. Then we constructed a more complex circuit with a \
+resistor, capacitor, and a switch so we could analyze the exponential decy of \
+the voltage across the capacitor when the switch is opened.\
+\>", "Text",
+ CellChangeTimes->{{3.6865730295181413`*^9, 3.6865730302056303`*^9}, {
+  3.686579154069199*^9, 3.686579455496052*^9}, {3.686579714145113*^9, 
+  3.6865797343680077`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 1: Capacitance of Parallel Plates", "Section",
+ CellChangeTimes->{{3.6865730419551826`*^9, 3.686573056994608*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Aplate", " ", "=", " ", "0.09456"}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Plate", " ", "Area", " ", "in", " ", 
+     RowBox[{"m", "^", "2"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Cstray", " ", "=", " ", 
+    RowBox[{"1.7", "*", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "11"}]}]}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Stray", " ", "Capacitance", " ", "in", " ", "F"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"T", " ", "=", " ", "0.001617"}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Average", " ", "Thickness", " ", "of", " ", "a", " ", "Nylon", " ", 
+     "Washer", " ", "in", " ", "m"}], "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"W", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "1", ",", " ", "2", ",", " ", "3", ",", " ", "4", ",", " ", "5", ",", 
+      " ", "6"}], "}"}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Number", " ", "of", " ", "Washers"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"C1", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "0.558", ",", " ", "0.282", ",", " ", "0.192", ",", " ", "0.150", ",", 
+       " ", "0.122", ",", " ", "0.105"}], "}"}], " ", "*", " ", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "8"}]}]}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Inter", "-", 
+     RowBox[{"Plate", " ", "Capacitance", " ", "in", " ", "F"}]}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"d", " ", "=", " ", 
+    RowBox[{"T", "*", "W"}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Calculating", " ", "the", " ", "actual", " ", "distance", " ", "between",
+      " ", "plate", " ", "in", " ", "m"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"C2", " ", "=", " ", 
+    RowBox[{"C1", " ", "-", " ", "Cstray"}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Calculatinf", " ", "the", " ", "actual", " ", "Capacitance", " ", "in", 
+     " ", "F"}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Cvsinvd", " ", "=", " ", 
+    RowBox[{"Thread", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "d"}], ",", " ", "C2"}], "}"}], "]"}]}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Making", " ", "the", " ", "data"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Grid", "[", 
+    RowBox[{
+     RowBox[{"Prepend", "[", 
+      RowBox[{"Cvsinvd", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(Distance\), \(-1\)]\) in \
+\!\(\*SuperscriptBox[\(m\), \(-1\)]\)\>\"", ",", " ", 
+         "\"\<Capacitance in F\>\""}], "}"}]}], "]"}], ",", " ", 
+     RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Cute", " ", "Tables"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"Cvsinvd", ",", " ", 
+    RowBox[{
+    "PlotLabel", "\[Rule]", 
+     "\"\<Plot of Capacitance vs. \!\(\*SuperscriptBox[\(Distance\), \
+\(-1\)]\)\>\""}], ",", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<\!\(\*SuperscriptBox[\(Distance\), \(-1\)]\) between plates in \
+\!\(\*SuperscriptBox[\(m\), \(-1\)]\)\>\"", ",", " ", 
+       "\"\<Capacitance in F\>\""}], "}"}]}]}], "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Cute", " ", "Graph"}], "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.686573222221757*^9, 3.6865732262061977`*^9}, {
+  3.6865733392861433`*^9, 3.6865733618490086`*^9}, {3.6865734438724804`*^9, 
+  3.686573470298382*^9}, {3.6865735040689855`*^9, 3.6865735375337267`*^9}, {
+  3.686573590111601*^9, 3.686573652187503*^9}, {3.6865737706300645`*^9, 
+  3.6865742160896153`*^9}, {3.686576176159609*^9, 3.686576176965209*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\\!\\(\\*SuperscriptBox[\\(Distance\\), \\(-1\\)]\\) in \
+\\!\\(\\*SuperscriptBox[\\(m\\), \\(-1\\)]\\)\"\>", "\<\"Capacitance in \
+F\"\>"},
+    {"618.4291898577613`", "5.563000000000001`*^-9"},
+    {"309.2145949288807`", "2.803`*^-9"},
+    {"206.14306328592045`", "1.903`*^-9"},
+    {"154.60729746444034`", "1.483`*^-9"},
+    {"123.68583797155226`", "1.2029999999999999`*^-9"},
+    {"103.07153164296022`", "1.0329999999999998`*^-9"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.6865741924609723`*^9, 3.686574217575695*^9}, 
+   3.68657783108225*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     PointBox[{{618.4291898577613, 5.563000000000001*^-9}, {309.2145949288807,
+       2.803*^-9}, {206.14306328592045`, 1.903*^-9}, {154.60729746444034`, 
+      1.483*^-9}, {123.68583797155226`, 1.2029999999999999`*^-9}, {
+      103.07153164296022`, 1.0329999999999998`*^-9}}]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+    "\"\\!\\(\\*SuperscriptBox[\\(Distance\\), \\(-1\\)]\\) between plates in \
+\\!\\(\\*SuperscriptBox[\\(m\\), \\(-1\\)]\\)\"", TraditionalForm], 
+    FormBox["\"Capacitance in F\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{607., Automatic},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Plot of Capacitance vs. \\!\\(\\*SuperscriptBox[\\(Distance\\), \
+\\(-1\\)]\\)\"", TraditionalForm],
+  PlotRange->{{0, 618.4291898577613}, {0, 5.563000000000001*^-9}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.6865741924609723`*^9, 3.686574217575695*^9}, 
+   3.686577831104253*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "\nFrom the data in the graph and the chart, we can see that as the invers \
+of the distance between the plates increase the capacitance also increases. \
+The trend seems to at least look relatively linear. And this agrees with the \
+known equation C = ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]]],
+ "A/d. If we look at the inverse of distance capacitance can be expressed by \
+C = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Epsilon]", "0"], 
+    SuperscriptBox["Ad", 
+     RowBox[{"-", "1"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".   "
+}], "Text",
+ CellChangeTimes->{{3.6865742556270638`*^9, 3.6865742563146286`*^9}, {
+   3.6865745357168694`*^9, 3.6865745374851866`*^9}, 3.6865790718438187`*^9, {
+   3.6865797468373566`*^9, 3.6865798728455677`*^9}, {3.686579922632019*^9, 
+   3.686580044571686*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6865790641090717`*^9, 3.686579064124671*^9}}],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.6865742622430353`*^9, 3.686574265004055*^9}, {
+  3.686574529205014*^9, 3.686574532948807*^9}, {3.6865790577650166`*^9, 
+  3.686579060187009*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"eps0", " ", "=", " ", 
+   FractionBox[
+    RowBox[{"(", 
+     RowBox[{"C2", "*", "d"}], ")"}], "Aplate"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"eps0avg", " ", "=", " ", 
+  FractionBox[
+   RowBox[{"(", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], 
+      RowBox[{"Length", "[", "eps0", "]"}]], 
+     RowBox[{"eps0", "[", 
+      RowBox[{"[", "i", "]"}], "]"}]}], ")"}], 
+   RowBox[{"Length", "[", "eps0", "]"}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eps0sd", " ", "=", " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"(", 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}], 
+        RowBox[{"Length", "[", "eps0", "]"}]], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"eps0", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], " ", "-", " ", "eps0avg"}], ")"}], 
+        "2"]}], ")"}], 
+     RowBox[{
+      RowBox[{"Length", "[", "eps0", "]"}], " ", "-", " ", "1"}]]]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"eps0sdom", " ", "=", " ", 
+  RowBox[{"eps0sd", "/", 
+   SqrtBox[
+    RowBox[{
+    "Length", "[", "eps0", "]"}]]}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.6865742812691813`*^9, 3.68657445590637*^9}, {
+   3.6865745036869917`*^9, 3.6865745237179227`*^9}, 3.6865761302603664`*^9}],
+
+Cell[BoxData["9.981703151438239`*^-11"], "Output",
+ CellChangeTimes->{3.6865744573184223`*^9, 3.6865745113096733`*^9, 
+  3.686577831202326*^9}],
+
+Cell[BoxData["1.7546194634422542`*^-12"], "Output",
+ CellChangeTimes->{3.6865744573184223`*^9, 3.6865745113096733`*^9, 
+  3.686577831205328*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.686574345319928*^9, 3.686574346478793*^9}}],
+
+Cell[TextData[{
+ "Our measured value of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = (9.98 \[PlusMinus] 0.02) * ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", 
+    RowBox[{"-", "11"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". However ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]]],
+ " is a constant and was given to us in the lab write up as ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]]],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"8.85", "*", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "12"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " F/m. Do they agree? Well, the actual value of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]]],
+ " minus our measured value is 8.85 - 9.98 = 1.13 which is greater than three \
+times the uncertainty, 3 * 0.02 = 0.06. Therefore, our measured value of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]]],
+ " does not agree with the actual value."
+}], "Text",
+ CellChangeTimes->{{3.686574552630479*^9, 3.686574553542157*^9}, {
+  3.686576747103247*^9, 3.686576798457528*^9}, {3.6865768819077415`*^9, 
+  3.6865769446781626`*^9}, {3.6865769946124954`*^9, 3.6865774014093547`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 2: Measurement of the Time Constant of an RC Circuit", "Section",
+ CellChangeTimes->{{3.686574583822733*^9, 3.6865746015749855`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"time", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", " ", "1.2", ",", " ", "2.9", ",", " ", "5", ",", " ", "7.8", 
+       ",", " ", "11.3", ",", " ", "16.3", ",", " ", "25.7", ",", " ", "28.2",
+        ",", " ", "30.6", ",", " ", "36", ",", " ", "41"}], "}"}], " ", "*", 
+     " ", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "3"}]}]}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Decay", " ", "Time", " ", "in", " ", "s"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"voltage", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "3.48", ",", " ", "3.08", ",", " ", "2.68", ",", " ", "2.28", ",", " ", 
+      "1.88", ",", " ", "1.48", ",", " ", "1.08", ",", " ", "0.6", ",", " ", 
+      "0.48", ",", " ", "0.40", ",", " ", "0.32", ",", " ", "0.20"}], "}"}]}],
+    ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Decay", " ", "in", " ", "Voltage", " ", "in", " ", "V"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lnvoltage", " ", "=", " ", 
+   RowBox[{"Log", "[", "voltage", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"lnvvst", " ", "=", " ", 
+  RowBox[{"Thread", "[", 
+   RowBox[{"{", 
+    RowBox[{"time", ",", " ", "lnvoltage"}], "}"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6865748542733517`*^9, 3.6865749101606855`*^9}, {
+  3.686574944598615*^9, 3.686575096859571*^9}, {3.686575737369305*^9, 
+  3.6865757660641384`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1.247032293786383`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.0012`", ",", "1.1249295969854831`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.0029`", ",", "0.9858167945227654`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "200"], ",", "0.8241754429663494`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.0078`", ",", "0.6312717768418578`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.011300000000000001`", ",", "0.3920420877760237`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.016300000000000002`", ",", "0.0769610411361284`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.0257`", ",", 
+     RowBox[{"-", "0.5108256237659907`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.0282`", ",", 
+     RowBox[{"-", "0.7339691750802004`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.030600000000000002`", ",", 
+     RowBox[{"-", "0.916290731874155`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["9", "250"], ",", 
+     RowBox[{"-", "1.1394342831883648`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["41", "1000"], ",", 
+     RowBox[{"-", "1.6094379124341003`"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6865757672089663`*^9, 3.6865778312223406`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Use", " ", "this", " ", "data", " ", "for", " ", "the", " ", "best", " ", 
+    "fit", " ", "line"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"time2", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", " ", "1.2", ",", " ", "2.9", ",", " ", "5", ",", " ", "7.8", 
+       ",", " ", "11.3", ",", " ", "16.3"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"voltage2", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "3.48", ",", " ", "3.08", ",", " ", "2.68", ",", " ", "2.28", ",", " ", 
+       "1.88", ",", " ", "1.48", ",", " ", "1.08"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"lnvoltage2", " ", "=", " ", 
+     RowBox[{"Log", "[", "voltage2", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x", " ", "=", " ", "time2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", " ", "=", " ", "lnvoltage2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"L", "  ", "=", " ", 
+     RowBox[{"Length", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    StyleBox["\[CapitalDelta]",
+     FontSize->14], 
+    StyleBox["=",
+     FontSize->14], 
+    RowBox[{
+     StyleBox[
+      RowBox[{"L", "*", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}], "L"], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"x", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ")"}], "2"]}]}],
+      FontSize->14], 
+     StyleBox["-",
+      FontSize->14], 
+     StyleBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "L"], 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ")"}], "2"],
+      FontSize->14], "\[IndentingNewLine]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.686575323122157*^9, 3.6865753645393906`*^9}, 
+   3.6865754197154055`*^9, {3.686575469523625*^9, 3.6865755823732324`*^9}, {
+   3.6865756836137886`*^9, 3.6865757323356605`*^9}, {3.686575781319247*^9, 
+   3.6865758086273394`*^9}, {3.686576184899109*^9, 3.6865762209950333`*^9}, {
+   3.686576280962739*^9, 3.6865762862486567`*^9}, 3.686576317913258*^9, {
+   3.6865764553107147`*^9, 3.686576462176833*^9}, {3.6865779516714067`*^9, 
+   3.6865779769360857`*^9}, {3.6865780112514706`*^9, 3.686578095180523*^9}, {
+   3.686578138276467*^9, 3.6865781546246767`*^9}}],
+
+Cell[BoxData["1443.2399999999998`"], "Output",
+ CellChangeTimes->{3.686576466694186*^9, 3.6865778312343493`*^9, 
+  3.6865781013730865`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"m", "=", 
+   RowBox[{
+    FractionBox["1", "\[CapitalDelta]"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"L", "*", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}], "L"], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"x", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "*", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], ")"}]}]}], "-", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "L"], 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}], "L"], 
+        RowBox[{"y", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}]}]}], ")"}], " ", 
+    RowBox[{
+     StyleBox[
+      RowBox[{"(", "*"}]], "Slope", 
+     StyleBox[
+      RowBox[{"*", ")"}]]}]}]}],
+  FontSize->14]], "Input",
+ CellChangeTimes->{{3.6865775839707775`*^9, 3.686577592003704*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", "67.3279242173965`"}]], "Output",
+ CellChangeTimes->{3.6865764771269636`*^9, 3.686577831243369*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["b",
+   FontSize->13], 
+  StyleBox["=",
+   FontSize->14], 
+  StyleBox[
+   RowBox[{
+    FractionBox["1", "\[CapitalDelta]"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}], "L"], 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"x", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ")"}], "2"], "*", 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"i", "=", "1"}], "L"], 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}]}]}], ")"}], "-", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "L"], 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "L"], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "*", 
+           RowBox[{"y", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ")"}]}], ")"}]}]}], ")"}], " ", 
+    RowBox[{
+     StyleBox[
+      RowBox[{"(", "*"}]], 
+     RowBox[{"Y", "-", "Intercept"}], 
+     StyleBox[
+      RowBox[{"*", ")"}]]}]}],
+   FontSize->14]}]], "Input",
+ CellChangeTimes->{{3.6865776119794717`*^9, 3.6865776196821814`*^9}}],
+
+Cell[BoxData["1.1868186413713215`"], "Output",
+ CellChangeTimes->{3.686576487224491*^9, 3.686577831253375*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"\[Sigma]y", "=", 
+   SqrtBox[
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"L", "-", "2"}]], "*", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "L"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"m", "*", 
+            RowBox[{"x", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "+", "b"}], ")"}]}], ")"}], 
+       "2"]}]}]]}],
+  FontSize->14]], "Input"],
+
+Cell[BoxData["0.04595596255678621`"], "Output",
+ CellChangeTimes->{3.6865765039749784`*^9, 3.6865778312643895`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"\[Delta]m", "=", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"L", "*", 
+      SuperscriptBox["\[Sigma]y", "2"]}], "\[CapitalDelta]"]], " ", 
+   RowBox[{
+    StyleBox[
+     RowBox[{"(", "*"}]], 
+    RowBox[{"Error", " ", "in", " ", "Slope"}], 
+    StyleBox[
+     RowBox[{"*", ")"}]]}]}],
+  FontSize->14]], "Input",
+ CellChangeTimes->{{3.6865775984234505`*^9, 3.68657760474515*^9}}],
+
+Cell[BoxData["0.9537333505526573`"], "Output",
+ CellChangeTimes->{3.686576514470808*^9, 3.686577831274391*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[Delta]b",
+   FontSize->14], 
+  StyleBox["=",
+   FontSize->14], 
+  SqrtBox[
+   FractionBox[
+    RowBox[{
+     SuperscriptBox["\[Sigma]y", "2"], "*", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "L"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"x", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ")"}], "2"]}]}], "\[CapitalDelta]"]],
+   " ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Error", " ", "in", " ", "Y"}], "-", "Intercept"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.686577624341614*^9, 3.6865776311266303`*^9}}],
+
+Cell[BoxData["0.0210725435969518`"], "Output",
+ CellChangeTimes->{3.6865765250246763`*^9, 3.686577831284424*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"DataPlot", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", "lnvvst", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"TheoryPlot", " ", "=", " ", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"m", "*", "q"}], "+", "b"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"q", ",", " ", "0", ",", " ", "0.05"}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"DataPlot", ",", " ", "TheoryPlot", ",", " ", 
+     RowBox[{
+     "PlotLabel", " ", "\[Rule]", 
+      "\"\<Log[Decay Voltage] vs. Decay Time\>\""}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Deacy Time in s\>\"", ",", " ", "\"\<Log[Voltage]\>\""}], 
+       "}"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6865765428059254`*^9, 3.686576648141446*^9}, {
+  3.686577419282339*^9, 3.6865775259488697`*^9}, {3.686578563155012*^9, 
+  3.686578565170737*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {{}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6], 
+      PointBox[{{0., 1.247032293786383}, {0.0012, 1.1249295969854831`}, {
+       0.0029, 0.9858167945227654}, {0.005, 0.8241754429663494}, {0.0078, 
+       0.6312717768418578}, {0.011300000000000001`, 0.3920420877760237}, {
+       0.016300000000000002`, 0.0769610411361284}, {
+       0.0257, -0.5108256237659907}, {0.0282, -0.7339691750802004}, {
+       0.030600000000000002`, -0.916290731874155}, {
+       0.036, -1.1394342831883648`}, {
+       0.041, -1.6094379124341003`}}]}, {}}, {}}, {{{}, {}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+      1.], LineBox[CompressedData["
+1:eJwVjns0lHkch+cla7M4jNlUO0qRxLLRpj2tfG1XRjQGuVQaVuVsTWwYUqhc
+IlkjGovJffCKKWOj2vR7WyInopZchihNGMzNVIrY2T8+5/PP85zzrAsOYxzT
+IJFI7ur9/6WSe5Gdlw2d8k48jNn6RQkpG8h3hBS50y2ziMHPc0ogO0bzMykk
+aBnZ6EiolODXhpvEUwxA7pu1RJtWwrxus38UxRT2uYSkMEVK6LzV9TGcshk+
+WOrkpN9TggP2svU0xRm8JD63XkcpQbLJX8Ci0EGPNSPOkCqAxe5xz3jEhJqL
+mdvXt8vhqF7mCy1xKDiqZurop2VQq0F70xUWDoJ2Ay7VZwaIgE2KmuZIiGha
+5crUnwKOHlm7oDMGRmNqMy9LJyCK12e/yjYOShkb+RYl70BmU6JDaboACoP3
+QcmBb0Hj50NLZg8vwQTXXdi28w2YNmgunZMkQQh7ZZnm7AjwXm2+NKRIAZrH
+za9BIIJDRbeZWrJUcJGJH3yK7wPzZ2tobON0kHZM65erXoBbtWGjbHUGdEeQ
+DazDOyFOpbStc80Eg7axHTPOLXD2pNFFk0YOyP2Wkw+fbYDg+rCadw1ZcCEp
+mTxZxAW6/a5hr45rYOpibcawxtGM9sCBPV3ZQDrFfvoDrwllUt61DY7nQLGp
+kfZ57SfIi8Vjec9fh6sPMh7Lr3SjVuq3PowFLsT4n2cebulBTppaO1XkP+Hu
+vcIj/X4D6JhzY/hq4zyounJzS0bRMKptJ3ear8gHJ9fUI0ETo2g+TWz7r1UB
+9Au8GUm2Y2iuOPaFlg0Pnuzn1je7i9Fnacq5od03ILhDsSc9fxyZpDkycn0L
+IfzEp83ZQ5NIfvav3176FkH/dnZq48cp9Lbbs2XIoRimZbqGIc5SZMmxiuTc
+LYaa07qJK+zkKO593/aGbSVAjZjYVOCoQN4fnJcJHpVAcKjn5FigEiWuT5ee
+2FkKPZ9Ur+6zZtGPEo5otrMUqOc3zPhkq9CO4ejJX+hl8Ec+xy6B/x75srfo
+a3SXwcNWz1IX4Qc0W129NSegHIixIuuXvR/RuI5m/ISoHOQ8yymFeA4d+cq4
+XT+UD6q9Ts3PdT+jt5VLVpUKPggX8TZP23nUHNlei52pgEIGXYPpuIDMhz22
+2H6pgMDcRB/7oC9oOPzOADWhEmgxilfXziyiimo5N26xEuTH7+Rkxy8hZcL4
+wdupVeBglmhXQycR3AtoG385Djqvn9T79JOIowNmy8Xf4LAmkMauHyQRlvap
+g+b6ONiLnv5kOEwi7o/R48rJOPj3PmvqeE0iRva++afsOxzw9p62XVNqXk/L
+o9QGh33CUZHdIon4O48WUuSJQ3LinKa+OUYkKQVbR7xwyCPFtp60wAgPNyPt
+tQdxEMTNp7ZbYsTogggvDMChN3pRL9kGI5YxWbIbv+JgfmrZygUHNW/BieVF
+4dDsbfC9xBUjjBNUbkPROPQ9z5Lu26/2+/xMqLE4SDyM6vgeGHEmbR1REI8D
+2XWFQ5AXRuROC7UKLuMQvIPq3H8YI5h7jPsG03CIun9Dw+EoRlgVnqtafRWH
+K9vWPs4OwogHB3a75XNwqLNbTztwHCOSq6qog9dweCwo060NVfdgetJV13EY
+sN7QpXNS3RPwO/LPxWG6qiIrlKXuEfZy8vJwIFlYereGYcR/32dqvg==
+       "]]}}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Deacy Time in s\"", TraditionalForm], 
+    FormBox["\"Log[Voltage]\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageMargins->{{1., 0.}, {0., 1.}},
+  ImagePadding->All,
+  ImageSize->{497., Automatic},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"Log[Decay Voltage] vs. Decay Time\"", TraditionalForm],
+  PlotRange->{{0, 0.041}, {-1.6094379124341003`, 1.247032293786383}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.6865775454623036`*^9, 3.6865778313204126`*^9, 
+  3.6865785664363794`*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+The data in our graph looks pretty good, the relationship between time and \
+the log(voltage) seems to be relatively linear. If we were to just relate \
+voltage to time we would get an exponential decay graph. Our data dips below \
+the x-axis because the log of a voltage less than 1V is a negative number.
+\
+\>", "Text",
+ CellChangeTimes->{{3.686577648326375*^9, 3.6865776490619416`*^9}, {
+  3.6865800706027007`*^9, 3.68658019535946*^9}, {3.6865802326151023`*^9, 
+  3.686580281570191*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"tau", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"-", "1"}], "/", "m"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\[Delta]tau", " ", "=", " ", 
+  RowBox[{"Abs", "[", 
+   RowBox[{"\[Delta]m", "/", 
+    RowBox[{"m", "^", "2"}]}], "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Can", " ", "you", " ", "derive", " ", "this", " ", "from", " ", "the", 
+    " ", "Master", " ", 
+    RowBox[{"Ruler", "?"}]}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.6865776589592323`*^9, 3.686577709674719*^9}, {
+  3.6865781948646803`*^9, 3.6865781967590785`*^9}}],
+
+Cell[BoxData["0.01485267831473728`"], "Output",
+ CellChangeTimes->{3.6865778313334227`*^9, 3.686578199902421*^9}],
+
+Cell[BoxData["0.0002103955352619506`"], "Output",
+ CellChangeTimes->{3.6865778313334227`*^9, 3.686578199903408*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Hence, the measured time constant, ",
+ "\[Tau],",
+ " using linear regression is (1.50 \[PlusMinus] 0.02) * ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", 
+    RowBox[{"-", "2"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "s. When we calculate the RC constant directly, we get R * C = 518 * (1.838 \
+* ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", 
+    RowBox[{"-", "5"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ") = 0.00952 s. If we compare these values we can determine if they agree or \
+not. The actual measurement minus our calculated measurement is 0.00952 - \
+0.0150 = 0.0055 which is greater than the uncertainty multiplied by 3, 0.0002 \
+* 3 = 0.0006, so the measured value disagrees with our calculated value."
+}], "Text",
+ CellChangeTimes->{{3.6865782157032175`*^9, 3.686578216797004*^9}, {
+  3.686578270481054*^9, 3.686578364964466*^9}, {3.6865785434398985`*^9, 
+  3.6865785475807233`*^9}, {3.686578617671775*^9, 3.68657870574069*^9}, {
+  3.6865787432849817`*^9, 3.686578954734681*^9}, {3.686578995240548*^9, 
+  3.686579015022189*^9}, {3.686579599652623*^9, 3.6865796280127115`*^9}, {
+  3.686579667841115*^9, 3.6865796680129995`*^9}, {3.686580445329028*^9, 
+  3.6865804503205767`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6865783603510413`*^9, 3.686578361124628*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Section",
+ CellChangeTimes->{{3.686579024569352*^9, 3.6865790257881336`*^9}}],
+
+Cell[TextData[{
+ "In conclusion, this was a vital lab in helping us understand the \
+functionality of capacitors and the behavior of RC circuits. Looking back on \
+the lab execution and our collected data, I guess we weren\[CloseCurlyQuote]t \
+as accurate as we could have been. For both our measured value of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Epsilon]", "0"], TraditionalForm]]],
+ " and measured value of \[Tau], we got that they didn\[CloseCurlyQuote]t \
+agree with the calculated values. We could have come across some errors in \
+reading the capacitance meter correctly or the parallel plate capacitor could \
+have had some excess charge on it that changed our collected data. Overall, \
+many things could have caused error in our data but I still think that our \
+data still says enough about the relationship between the various things we \
+measured (capacitance and plate distance, voltage and decay time in an RC \
+circuit)."
+}], "Text",
+ CellChangeTimes->{{3.6865790310696645`*^9, 3.686579031569689*^9}, {
+  3.686580291546818*^9, 3.6865806915449514`*^9}, {3.6865807610602226`*^9, 
+  3.686580840833249*^9}, {3.686580904968609*^9, 3.6865809243288617`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{959, 911},
+WindowMargins->{{Automatic, 157}, {Automatic, 70}},
+PrintingStartingPageNumber->1,
+PageHeaders->{{
+   Cell[
+    TextData[{
+      StyleBox[
+       CounterBox["Page"], "PageNumber"], "   ", "|", " ", 
+      StyleBox[
+       ValueBox["FileName"], "Header"]}], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, 
+   Cell[
+    TextData[{"Priyanka", " ", "Makin"}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
+   Cell[
+    TextData[{"Priyanka", " ", "Makin"}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->True,
+"FirstPageFace"->Right,
+"FirstPageFooter"->False,
+"FirstPageHeader"->True},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 136, 1, 166, "Title"],
+Cell[CellGroupData[{
+Cell[741, 27, 134, 5, 174, "Chapter"],
+Cell[CellGroupData[{
+Cell[900, 36, 96, 1, 70, "Section"],
+Cell[999, 39, 710, 11, 87, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1746, 55, 125, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[1896, 60, 3749, 92, 360, "Input"],
+Cell[5648, 154, 756, 17, 153, "Output"],
+Cell[6407, 173, 2040, 46, 313, "Output"]
+}, Open  ]],
+Cell[8462, 222, 895, 22, 89, "Text"],
+Cell[9360, 246, 94, 1, 31, InheritFromParent],
+Cell[9457, 249, 184, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[9666, 256, 1364, 41, 211, "Input"],
+Cell[11033, 299, 143, 2, 31, "Output"],
+Cell[11179, 303, 144, 2, 31, "Output"]
+}, Open  ]],
+Cell[11338, 308, 92, 1, 31, "Input"],
+Cell[11433, 311, 1375, 40, 72, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12845, 356, 144, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[13014, 361, 1455, 37, 112, "Input"],
+Cell[14472, 400, 1318, 35, 102, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15827, 440, 2525, 67, 270, InheritFromParent],
+Cell[18355, 509, 139, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18531, 516, 1069, 35, 62, "Input"],
+Cell[19603, 553, 127, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19767, 560, 1467, 49, 62, "Input"],
+Cell[21237, 611, 110, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21384, 617, 590, 21, 75, "Input"],
+Cell[21977, 640, 115, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22129, 646, 415, 14, 63, "Input"],
+Cell[22547, 662, 110, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22694, 668, 618, 22, 68, "Input"],
+Cell[23315, 692, 112, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23464, 698, 1039, 26, 112, "Input"],
+Cell[24506, 726, 3976, 78, 292, "Output"]
+}, Open  ]],
+Cell[28497, 807, 501, 10, 106, "Text"],
+Cell[CellGroupData[{
+Cell[29023, 821, 557, 14, 52, "Input"],
+Cell[29583, 837, 113, 1, 31, "Output"],
+Cell[29699, 840, 115, 1, 31, "Output"]
+}, Open  ]],
+Cell[29829, 844, 1256, 27, 91, "Text"],
+Cell[31088, 873, 94, 1, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31219, 879, 97, 1, 70, "Section"],
+Cell[31319, 882, 1177, 19, 144, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

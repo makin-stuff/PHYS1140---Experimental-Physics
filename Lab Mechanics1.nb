@@ -1,0 +1,689 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26347,        681]
+NotebookOptionsPosition[     24424,        613]
+NotebookOutlinePosition[     25329,        643]
+CellTagsIndexPosition[     25286,        640]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["M1: The Simple Pendulum", "Title",
+ CellChangeTimes->{{3.684154460670437*^9, 3.6841544687019687`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Priyanka Makin
+Maya Fabrikant
+09/29/2016\
+\>", "Chapter",
+ CellChangeTimes->{{3.6841544965471277`*^9, 3.6841545224754467`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Section",
+ CellChangeTimes->{{3.684154533116371*^9, 3.684154536147705*^9}}],
+
+Cell["\<\
+In this lab we explored simple harmonic motion using a pendulum. We first \
+computed the acceleration of gravity by making initial measurements of the \
+length of our pendulum and its period.We then varied the length of the \
+pendulum and its amplitude and analyzed the effect it had on the pendulum\
+\[CloseCurlyQuote]s period for a swing. \
+\>", "Text",
+ CellChangeTimes->{{3.684154786288729*^9, 3.6841549339628553`*^9}, {
+  3.6841549677289677`*^9, 3.684154994916909*^9}, {3.6841576028209825`*^9, 
+  3.684157627468549*^9}, {3.684157701748486*^9, 3.684157820366302*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 1: Precision Determination of g", "Section",
+ CellChangeTimes->{{3.68415501532347*^9, 3.684155026417364*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"h", " ", "=", " ", "0.034"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Height", " ", "of", " ", "the", " ", "Mass", " ", "in", " ", "m"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Delta]h", " ", "=", " ", "0.001"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Uncertainty", " ", "in", " ", "m"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Lambda]", " ", "=", " ", "1.235"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Length", " ", "of", " ", "the", " ", "string", " ", "in", " ", "m"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Delta]\[Lambda]", "  ", "=", " ", "0.001"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Uncertainty", " ", "in", " ", "m"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"L", " ", "=", " ", 
+    RowBox[{"\[Lambda]", "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", "2"}], ")"}], "h"}]}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Length", " ", "of", " ", "the", " ", "Pendulum", " ", "in", " ", "m"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Delta]L", " ", "=", " ", 
+    SqrtBox[
+     RowBox[{
+      SuperscriptBox["\[Delta]h", "2"], "+", 
+      SuperscriptBox["\[Delta]h", "2"]}]]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Uncertainty", " ", "of", " ", "the", " ", "length"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tper", " ", "=", " ", "2.2407"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Period", " ", "of", " ", "1", " ", "oscillation", " ", "in", " ", "s"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Delta]Tper", " ", "=", " ", "0.0002"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Uncertainty", " ", "in", " ", "s"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gknown", " ", "=", " ", "9.769"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Known", " ", "value", " ", "of", " ", "g", " ", "in", " ", 
+    RowBox[{"m", "/", 
+     RowBox[{"s", "^", "2"}]}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gmeas", " ", "=", " ", 
+   RowBox[{"4", 
+    SuperscriptBox["\[Pi]", "2"], "*", 
+    FractionBox["L", 
+     SuperscriptBox["Tper", "2"]]}]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Calculating", " ", "our", " ", "measured", " ", "value", " ", "of", " ", 
+    "g"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Delta]meas", " ", "=", " ", 
+   RowBox[{"gmeas", 
+    SqrtBox[
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox["\[Delta]L", "L"], ")"}], "2"], "+", 
+      RowBox[{"2", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["\[Delta]Tper", "Tper"], ")"}], "2"]}]}]]}]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Uncertainty", " ", "of", " ", "measured", " ", "g"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\[CapitalDelta]gmeas", " ", "=", " ", 
+  RowBox[{"Abs", "[", 
+   RowBox[{"gmeas", " ", "-", " ", "gknown"}], "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Discrepancy", " ", "between", " ", "actual", " ", "g", " ", "and", " ", 
+    "measured", " ", "g"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.684155094491053*^9, 3.684155094491053*^9}, {
+  3.6841551344736576`*^9, 3.6841553377065086`*^9}, {3.6841553881424246`*^9, 
+  3.6841554044911017`*^9}, {3.684155462812639*^9, 3.6841557198608303`*^9}, {
+  3.684155769893852*^9, 3.6841557926982718`*^9}, {3.6841558316740494`*^9, 
+  3.6841559390300894`*^9}}],
+
+Cell[BoxData["9.844567413386697`"], "Output",
+ CellChangeTimes->{3.684155811316494*^9}],
+
+Cell[BoxData["0.011189284075650827`"], "Output",
+ CellChangeTimes->{3.684155811317495*^9}],
+
+Cell[BoxData["0.07556741338669681`"], "Output",
+ CellChangeTimes->{3.6841558113184958`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "So the measured value of g is (9.84 \[PlusMinus] 0.01) ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"m", "/", 
+     SuperscriptBox["s", "2"]}], " ", "with", " ", "a", " ", "discrepancy", 
+    " ", "of", " ", "0.076", "  ", 
+    RowBox[{"m", "/", 
+     RowBox[{
+      SuperscriptBox["s", "2"], "."}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.6841559816145964`*^9, 3.6841560012075896`*^9}, {
+  3.6841560897321634`*^9, 3.6841561417589364`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 2: Dependence of T on L", "Section",
+ CellChangeTimes->{{3.6841561499418507`*^9, 3.6841561614682393`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Lengths", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "0.475", ",", " ", "0.687", ",", " ", "0.899", ",", " ", "1.086", ",", 
+      " ", "1.235"}], "}"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Lengths", " ", "of", " ", "different", " ", "strings", " ", "in", " ", 
+    "m"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Per", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "1.3775", ",", " ", "1.6610", ",", " ", "1.8988", ",", " ", "2.0886", 
+      ",", " ", "2.407"}], "}"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Period", " ", "of", " ", "different", " ", "lengths", " ", "in", " ", 
+    "s"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PerSq", " ", "=", " ", 
+    RowBox[{"Per", "^", "2"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Period", " ", "square", " ", "in", " ", 
+    RowBox[{"s", "^", "2"}]}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TvsLData", " ", "=", " ", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"{", 
+     RowBox[{"Lengths", ",", " ", "Per"}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TvsPerSqData", " ", "=", " ", 
+    RowBox[{"Thread", "[", 
+     RowBox[{"{", 
+      RowBox[{"Lengths", ",", " ", "PerSq"}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"TvsLData", ",", " ", 
+    RowBox[{"PlotLabel", "\[Rule]", "\"\<Period vs. Length\>\""}], ",", " ", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Lenght in m\>\"", ",", " ", "\"\<Period in s\>\""}], 
+      "}"}]}]}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"ListPlot", "[", "TvsPerSqData", "]"}], ",", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"4", 
+        FractionBox[
+         SuperscriptBox["\[Pi]", "2"], "gknown"]}], ")"}], "x"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", "0", ",", " ", "1.3"}], "}"}]}], "]"}], ",", " ", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", 
+    "\"\<\!\(\*SuperscriptBox[\(Period\), \(2\)]\) vs. Length\>\""}], ",", 
+   " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Length in m\>\"", ",", " ", 
+      "\"\<\!\(\*SuperscriptBox[\(Period\), \(2\)]\) in \!\(\*SuperscriptBox[\
+\(s\), \(2\)]\)\>\""}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6841562374383326`*^9, 3.684156638937868*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     PointBox[{{0.475, 1.3775}, {0.687, 1.661}, {0.899, 1.8988}, {1.086, 
+      2.0886}, {1.235, 2.407}}]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Lenght in m\"", TraditionalForm], 
+    FormBox["\"Period in s\"", TraditionalForm]},
+  AxesOrigin->{0.463125, 1.326025},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"Period vs. Length\"", TraditionalForm],
+  PlotRange->{{0.475, 1.235}, {1.3775, 2.407}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.6841566438073673`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {{}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6], 
+      PointBox[{{0.475, 1.89750625}, {0.687, 2.758921}, {0.899, 
+       3.6054414400000003`}, {1.086, 4.36224996}, {1.235, 
+       5.793649}}]}, {}}, {}}, {{{}, {}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+      1.], LineBox[CompressedData["
+1:eJwVjH0803kcwNnkMebhhxExTqKHVR56Ndnn23J1Ulep4yI6u+4XpiuVHtb0
+ypGLl4d4LeG1XK0pWVOqldPlsbXEq6dTVBraMM+b/VA73Lk/3q/36/3Pm8Y+
+FP4LycDAYNs8//s716pPEt5eprbsgMMzOY+p5wXjQhoDcunuskw8Csoae5MS
+aFugjnQhYBueCBqln2YrLQoiR+QHV+FccJrsqmbSEsGzV2nmgWeDJLW6cC2N
+C+c/ajuc8VKYblxE9qdlw6POL0xHvBJcVDuC1tBK4YdI3hF7vBaS0amycwwx
+WP1cmv79b62gYGCPMMZ9qGtm2ccfaofokJqX1dJaMDPxyHSZ+QCPS7TpM4oG
+2FQT+fW4RS8Yi+smLb2fQOjSpiX0vSpwo28/dUwqhwNi8ptJ3QCIhr4tQH6t
+QDHRh01xh0EJxBn9sRegd8WCN8nGQE/2q8+YewUGIlJE+DItdN+X+6SL3kC5
+g2XozbcTwE3Lj/VntUPeZLLn5RMEpJqsc7Emv4MFsU3rqcFTEBNV9+RzeQe4
+ikQ2QappKMe9pro576H56BGvvqqvcC2vXpvv8xEkt0vdlyf/A2fSAzoDW7pg
+XcvuDmf7WWhcnbvZNEcBu5L0bRe65iA5omdHPLUHfp+iQgfLAEk1iU1xMz0g
+Pu370MfHELVTKSX+Xb2gDRwUbrEgIbY3rY8k+QxmvYeTQEFCIltRCp6vhIHt
+v76dbiKj3Sr+aRlbBRcl/i4ZxUaoe+Mf/bOr+wDfUPFOkbAALT7rXNRq2w9z
+JQWrZrcaozYh+RFf1Q8HejfGj7uboJXCmG908gEoGuVAubEp4tBfT/jeUIOa
+viHbR22KHK7dDYw9MQjmcd1302rN0HGdUf2SPUNAROi4l8vMUYiv7K+hZcNQ
+FfTKPfeoBRodK3M7rx+G7IgoRljIQrTlwuDT2g8jsCIwSte2xBI5UIVKtXgU
+hEae2R56S1TEaw25lTcGXZfiGoK6rVCGnL2Iwx6HAaeE9qVSCvJ+lSU2dNKA
+xaDVyiMbrVF/ZSmnOEsDmd6ixtVSa9R1kt1/a0ID8Z9cQ6LdbNByKZucs18L
+VSnhRXihDUqoGX8T2a6FBTdjPPaQbZGiyi/m6voJkO3adlmaZIskdneypJIJ
+UPdMD+gUtugeR3l4s6MOjvZl0gShduh69jXzp2d0YH1uhL/srh0iHAWbKOPz
+bWLZKfDE0KnisOB3kQScNLA1P5mLIYH7QcfKPQSEsYTSHfkYaqjI06ZGE7A4
+Y02cTwGGjP98Xe61j4Bmk101H/gY4r+PtErBCaBQ+HiwAEN3nPd326UQcN3V
+oZkkxpBawEvbWUhAO8OZl/sMQwu9yqK9+ARU8Cq98ecYokvqA75eJIBbx/ib
+2Yah449JQ1dKCHBnRftqXmLISHE+XHOFAE6ooDO8A0Nubhc9828TQPpxcQC1
+H0OsGw9m2dXz/5KqHs0AhnB6Z0fgPQJufGTmtAxi6BYsylE8IGDrvn1K7iiG
+GD9dJVbUEVCMXyn4RGAoVt30wrBh/l+xKvjBFIbSDqsq3jYSwBxqUOd9wdCz
+s94xqTIClAd7Ac1gaMQ0dO1OOQEPbycPU+cwRClItPFqISBLa3hJ+y+G1jjl
+DH95TsBev0LWc0N7FHFVImtrI4Ce4jEmJNuj/wDSEEp3
+       "]]}}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Length in m\"", TraditionalForm], 
+    FormBox[
+    "\"\\!\\(\\*SuperscriptBox[\\(Period\\), \\(2\\)]\\) in \
+\\!\\(\\*SuperscriptBox[\\(s\\), \\(2\\)]\\)\"", TraditionalForm]},
+  AxesOrigin->{0.463125, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"\\!\\(\\*SuperscriptBox[\\(Period\\), \\(2\\)]\\) vs. Length\"", 
+    TraditionalForm],
+  PlotRange->{{0.475, 1.235}, {0, 5.793649}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.684156643855402*^9}]
+}, Open  ]],
+
+Cell["\<\
+When we look at the Period vs. Length graph, it is not obvious if anything is \
+wrong with our data, it\[CloseCurlyQuote]s just a collection of points. But \
+when we analyze the Period^2 vs. Length graph, we can see something strange \
+going on with our data. The first four points seem to sit on the line y(x) = \
+(4\[Pi] ^(2)x)/g really well, but the last data point is way off.\
+\>", "Text",
+ CellChangeTimes->{{3.684156715241431*^9, 3.684156881811137*^9}, {
+  3.6841569387947445`*^9, 3.684156992059697*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Part 3: Dependence of T on Amplitude", "Section",
+ CellChangeTimes->{{3.684157000577811*^9, 3.6841570097622995`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"AngleDeg", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "5", ",", " ", "10", ",", " ", "15", ",", " ", "20", ",", " ", "25", ",",
+       " ", "30", ",", " ", "35", ",", " ", "40", ",", " ", "45", ",", " ", 
+      "50", ",", " ", "55", ",", " ", "60", ",", " ", "65", ",", " ", "70"}], 
+     "}"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Amplitude", " ", "in", " ", "degrees"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TAngle", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "2.0873", ",", " ", "2.0916", ",", " ", "2.0950", ",", " ", "2.1026", 
+      ",", " ", "2.1118", ",", " ", "2.1212", ",", " ", "2.1353", ",", " ", 
+      "2.1509", ",", " ", "2.1688", ",", " ", "2.1879", ",", " ", "2.2116", 
+      ",", " ", "2.2396", ",", " ", "2.2650", ",", " ", "2.3017"}], "}"}]}], 
+   ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Period", " ", "of", " ", "oscillation", " ", "in", " ", "s"}], 
+   "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AngleRad", " ", "=", " ", 
+   RowBox[{"AngleDeg", "*", 
+    RowBox[{"(", 
+     RowBox[{"\[Pi]", "/", "180"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TvsAData", " ", "=", " ", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"{", 
+     RowBox[{"AngleRad", ",", " ", "TAngle"}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"ListPlot", "[", "TvsAData", "]"}], ",", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"2", "\[Pi]", 
+      SqrtBox[
+       FractionBox["1.086", "gknown"]], 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        RowBox[{
+         RowBox[{"(", 
+          FractionBox["1", "16"], ")"}], 
+         SuperscriptBox["q", "2"]}], "+", 
+        RowBox[{
+         RowBox[{"(", 
+          FractionBox["11", "3072"], ")"}], 
+         SuperscriptBox["q", "4"]}]}], ")"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", " ", "0", ",", " ", "1.4"}], "}"}]}], "]"}], ",", " ", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Period vs. Amplitude\>\""}], ",", " ", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Initial Angle in Radians\>\"", ",", " ", "\"\<Period in s\>\""}], 
+     "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6841570300828066`*^9, 3.6841574421854887`*^9}, {
+  3.6841576517118263`*^9, 3.684157675974117*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {{}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6], 
+      PointBox[{{0.08726646259971647, 2.0873}, {0.17453292519943295`, 
+       2.0916}, {0.26179938779914946`, 2.095}, {0.3490658503988659, 2.1026}, {
+       0.4363323129985824, 2.1118}, {0.5235987755982989, 2.1212}, {
+       0.6108652381980153, 2.1353}, {0.6981317007977318, 2.1509}, {
+       0.7853981633974483, 2.1688}, {0.8726646259971648, 2.1879}, {
+       0.9599310885968813, 2.2116}, {1.0471975511965979`, 2.2396}, {
+       1.1344640137963142`, 2.265}, {1.2217304763960306`, 
+       2.3017}}]}, {}}, {}}, {{{}, {}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+      1.], LineBox[CompressedData["
+1:eJwV03k81ekXB/Dv9947Rcn4SSprKIoGEyWR82iRrEUMN0RlabJLlmStkFtk
+ZGTo3siWbRJiwuQaJTEkijCSsu/d+00hv+f+8bzO6/3PeZ3zeZ1H4bSPlSuN
+IIhM/AT1D+ZhVl6xk8ENxUXN81wC5dUP1Ozdqg8KhXu1BZYpSHJZVDIDZ5G5
+/QKXVdntmpKyAUejrRYCv5UZe9Sn5AD69h1nBQ5/WiPlluoC6ocXowROmr/S
+2y/lCj5r2DkCZ201z7Bhe4B5QW2bwOW2GxxblTxBXvEXwhP7WVy/7OF8H7AI
+PK8jsGe/lY9Tqh9YZn+7IHAgVWmZbhcAOUWMaoHDf5TWfCMVCAO34ule2LHb
+I8TE+y8C2zr+hMBJhkOz5uxguDlPLxI4O6DwYaNSGMw3n/P2xi5i/ZhMDl8G
+xiqbHoErcwL89+dHQLTCExMf7I8TmXeYqVGQuPwF+WJ7LLTFBwdFg9rTfxsF
+nmLQQlPtYsDUfctxP2xK1o3ZIXUVaty1L/ljh6qmmcwuXoX4BmpzAPbKnuZ9
+ov3X4KWQ9t8CCx1TlzZhxwHYyMsGYktFU731SiwolK9WDsZm39zeMsC4AXdm
+rb4KvPUPZs3ypxsQ+ti9IwT7p/K6DN38RLBXp6Vdwt4S0FBil3oLzlHffCOw
+T4f05Y6sSgavIs+gSOz7Efy7F4OSwdrD/koU9g6WSmKK3W/A/Zb9MAZ7V06C
+T7vUbZBoWbaPw75QeN/9VMJtqJg/khIvyOdh7anpxduQtmtd13VsvboZS5H+
+VOgREv71Bvaht9aaxuw0MHV8NpiMbSssM/e3UgZsOcgUYmM/0LlT+CwzA0TL
+X7ZyBHm4Srq1bswEneO96VnY+Vyx3ndr74KZYpdpLvbipR8a+Z/ZsC9LS7gE
++1hQUMuGD/dA34szVyfIV7Ryx2b5LEgcoTTrBfvl8K7JOGTBuoGJoAbsr6/9
+DJXeZIGTw0OZJsH9aXpWajZng612Yf0rbN6YM8e0LAcMqk6FDGPLRbGXLWZy
+oKKHs2sM23jTf0yrnblg3hf5eQI70+jkBvvcXIjkyLLmsI2yba67peeB3njz
+pmXsNAeTC1HRBSA3+Y29oYFA+m1axo+tioHTM+Jqhu0w1vlbaUIx6L8K7rTE
+vky/OJD3TzEUXi89ao1dp1N1MW1PCSi5iBozsQ05+jkhUqXACEhO8cDOrlIk
+5fz+hMx1TzyvYefHqzm931sG6epNm59jV0kuxTjYlIG9mILjS+ym7JaCbr8y
+oJ5uyWvDHqv14rc/KAOtcgnLbmzV+VJWvcwj6Jpomx7DLmZqP8kiyuHzxgwv
+0X/wf1fbv8m1qQL4Mh0eDtiS+0W0rD5WQMCSn7sLdqhFrzkQlXCzLsjTDfuA
+X0jM5r2VUC1REe+L3VFZMd2aVwl6uxbErmLPGao37ol9DKIFBVal2Jp28v5C
+RtUQu7Q6W6iRQCnnpll8l2oQvhHiLYq9EFqb9+FyNWj/aoUksJ9mnuyvqagG
+A719X+Sxjw39buy37S84kzT0UAfb11tM/h3jCSBeHtMDu/QK2VLYUAP/NR8P
+/Rd7E+fcW2qwBr5078zqwo588uqDIVELUc+TX/UJ+s3f+/pWvxaqWCtGE9jz
+pw6oMCprwbTQiSX0jEB79GKiHfLrYET8YNQh7IHg6IxrRk/BWFlFgovtrsGw
+1lHjAmu8+MPr5wTq7j8mwdTlgpCItHUftgkrsyvsCBdyj8g1f8RWH9tjxz3D
+hR6bkZd8bCrrnKN5BhdUWq/KbWoi0BXJNvcz6xqg0JxBOGFnLd8JS5xpgImC
+hPJp7P6XGrkjjxrhe5j4qFIzgT7lh4nYxr0Afd6dNzKtBHIRSxcfMmmF9gNa
+m6PaCXTvtU/EKbd2IOb1Kjd2EugkKEXsNO+Aw/Hr+f7dBHrOHZ/jrO+EhAbN
+m7w+AnknpJdvfdUFDZ/CLr4YJJAT711kbPlb6Dizmxc+QiAiUOPpraAeiDrY
+EnFwikATtyWELzn3QlKC+sLKZwKJLQ3eC0D9cEVO3lJ6kUCjIQ3F64kBOBHZ
+0/kTjUSMlnSXF/7vIVQpssF2DYmmhvtzHGwGIeEmR+W8OIkWj495D5h8AOld
+BVSJNIlyB0YHxvSGQFhxZZX5NhKphvivaZL5CA9iAuzr1En0+vQ/1bfFPsH3
+Bx9WReqSyMaOo6jD+wSmvEYF4UMkuuDrq+X8ehjWe/3S0WlBoqpuoRfBjSMg
+rajvI36SRF1maptc80ahI+Ijc8WNRBv/JzmJMsYA+WtrhF4gEfWF536fNQ6T
+ug7pR6JJVDLumNnrOQEylJ1wYSKJEn5K/IXmPAlG08Ep9XdJZBhm8nLpwBRs
+CN7e6VJMopSpr8PhCtNweKf5Wv0aEomU+sXOis/A9b5wt5kWEjmGBQzu5s0A
+nzxRK95PovEWOefdF2YhdqFoSH2GRLcGjYt0h2dhMntSpYSgodjVXi2k7Ry8
+H1IMOytOQ4k2/BLDtjkIuUzT3q9MQ1cKDnifR/MwvMOu2VGXhhK28WZEnszD
+xlA1xwYLGhosYx/21/oMZjl79wSepSElI7Hg+uzP8OzEtnfHQ2gomPzkGSfL
+g6E0Zve9JBqq5oYb6CbyoMbMKk40j4aO3hb/WPydB2fGys0La2loInGNWXoQ
+H5Rd2yfH39BQaNLzJN9RPhz/sY63fYaGVJ1W3D3G+XCVtfNxKvY7NR1wnuRD
+vjrvGmOWhvY9z52ynOVD7P1ki/fYi8tXTTQW+DBWohyeNk9DYecPMaZXU7D1
+SPiptRQNhRvVB51XoUBSL+7nxSUaUpf4anFmBwVHjGc4vy7T0H+Dmson1SgY
+rW6VfYdtcJnTaaJBwcY0HlR/p6GVRxE/q+pQsDzEUA4m6ChSwWBi1IiCEfkf
+QhfodKQ5E8h9b0xBadWJeg8GHb2vKb7TbULBekpVsgfb0E7WuMmCgqKffUar
+f6AjWuLS/TxbCjoD/TTCVtNRmYN2GNuOgpQlsaFJ7NOqnta/MymQaze47yhE
+R9zGXjLWCc+rddQShOnI/7f1PeHOFFDFKrp/Yiu6mP558TQFN0zTNBXW0FGH
+ekys91kKWsiM3cnYMUt/Obm5URD7TMuYvpaO/g+I5ITS
+       "]]}}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Initial Angle in Radians\"", TraditionalForm], 
+    FormBox["\"Period in s\"", TraditionalForm]},
+  AxesOrigin->{0, 2.07658},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"Period vs. Amplitude\"", TraditionalForm],
+  PlotRange->{{0, 1.2217304763960306`}, {2.0873, 2.3017}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.684157446466538*^9, 3.684157678464864*^9}]
+}, Open  ]],
+
+Cell["\<\
+This graph looks pretty good. The points do follow the curve of the period \
+equation quite closely. However, none of the points actually lie on it. Our \
+data points seem to be uniformly shifted just a little below the curve. The \
+point with the greatest amplitude is the closest to this curve. It seems as \
+if as the amplitude increased, our measured period got closer to the \
+calculated period.\
+\>", "Text",
+ CellChangeTimes->{{3.6841578687922974`*^9, 3.684158080067703*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Section",
+ CellChangeTimes->{{3.684158086325509*^9, 3.684158087740591*^9}}],
+
+Cell["\<\
+If we look back at part 1 of this lab, our measurements seem pretty accurate; \
+we got a relatively close calculation for the acceleration of gravity to the \
+actual measured value. Then, in part 2, we seem to have some discrepancies in \
+our measurements. Our Period vs. Length graph doesn\[CloseCurlyQuote]t seem \
+to be curving the right way (shaped like a x^(1/2) graph), so when we plotted \
+our Period^(2) vs. Length graph it wasn\[CloseCurlyQuote]t completely linear. \
+Then in part 3, our measurements of the period as a whole seem pretty \
+consistent, however they are consistently off of the the calculated periods \
+they should be. In this lab, there were all kinds of opportunities for error. \
+We could have measured the strings inaccurately, not dropped the pendulum \
+consistently, not measured the amplitude accurately, or reported the wrong \
+photogate data. With all this taken into consideration though, I think the \
+lab went pretty well and the measurements we took were quite accurate.\
+\>", "Text",
+ CellChangeTimes->{{3.684158126164937*^9, 3.684158630158823*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{882, 833},
+WindowMargins->{{Automatic, 16}, {Automatic, 128}},
+PrintingStartingPageNumber->1,
+PageHeaders->{{None, None, 
+   Cell[
+    TextData[{"Priyanka", " ", "Makin"}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
+   Cell[
+    TextData[{"Priyanka", " ", "Makin"}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->False,
+"FirstPageFace"->Right,
+"FirstPageFooter"->False,
+"FirstPageHeader"->True},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 108, 1, 101, "Title"],
+Cell[CellGroupData[{
+Cell[713, 27, 137, 5, 174, "Chapter"],
+Cell[CellGroupData[{
+Cell[875, 36, 97, 1, 70, "Section"],
+Cell[975, 39, 581, 9, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1593, 53, 120, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[1738, 58, 3634, 104, 405, "Input"],
+Cell[5375, 164, 87, 1, 31, "Output"],
+Cell[5465, 167, 90, 1, 31, "Output"],
+Cell[5558, 170, 91, 1, 31, "Output"]
+}, Open  ]],
+Cell[5664, 174, 516, 14, 36, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6217, 193, 117, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[6359, 198, 2589, 74, 284, "Input"],
+Cell[8951, 274, 1600, 38, 232, "Output"],
+Cell[10554, 314, 3614, 74, 232, "Output"]
+}, Open  ]],
+Cell[14183, 391, 521, 8, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14741, 404, 123, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[14889, 409, 2414, 64, 228, "Input"],
+Cell[17306, 475, 5339, 99, 201, "Output"]
+}, Open  ]],
+Cell[22660, 577, 492, 8, 87, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23189, 590, 95, 1, 70, "Section"],
+Cell[23287, 593, 1097, 15, 182, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

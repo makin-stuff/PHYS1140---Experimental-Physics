@@ -1,0 +1,818 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26876,        810]
+NotebookOptionsPosition[     25020,        746]
+NotebookOutlinePosition[     25922,        776]
+CellTagsIndexPosition[     25879,        773]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.682944475131706*^9, 3.6829444773661613`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "E1: Introduction to Circuits\n",
+ StyleBox["Priyanka Makin\nMaya Fabrikant\n09/15/2016", "Chapter"]
+}], "Title",
+ CellChangeTimes->{{3.682944554712184*^9, 3.682944678730916*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Section",
+ CellChangeTimes->{{3.6829448549536467`*^9, 3.6829448580630918`*^9}}],
+
+Cell["\<\
+In this first lab, we explored basic circuits. We used a vareity of \
+electrical components such as resistors, light bulbs, cables, DC power \
+supply, multimeter, and oscilloscope. We first started with learning how to \
+use the oscilloscope and measuring the resistances of the light bulb and the \
+wire. Then we created a circuit and analyzed the relationship between voltage \
+and current using the oscilloscope.\
+\>", "Text",
+ CellChangeTimes->{{3.682944937814891*^9, 3.6829450679115734`*^9}, {
+  3.6829451000998054`*^9, 3.6829452288370852`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Data and Calculation", "Section",
+ CellChangeTimes->{{3.6829462460605373`*^9, 3.682946254404984*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Rsystem", " ", "=", " ", "1.8"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Bulb", "+", 
+    RowBox[{"Wire", " ", "resistance", " ", "in", " ", "Ohms"}]}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Rwires", " ", "=", " ", "0.4"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Resistance", " ", "of", " ", "the", " ", "wires", " ", "in", " ", 
+    "Ohms"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Delta]R", " ", "=", " ", "0.1"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Uncertainty", " ", "on", " ", "the", " ", "Dmm", " ", "in", " ", "Ohms"}],
+    "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Rbulb", " ", "=", " ", 
+   RowBox[{"Rsystem", " ", "-", " ", "Rwires"}]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Resistance", " ", "of", " ", "the", " ", "bulb", " ", "in", " ", "Ohms"}],
+    "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Delta]Rbulb", " ", "=", " ", 
+   SqrtBox[
+    RowBox[{
+     RowBox[{"\[Delta]R", "^", "2"}], " ", "+", " ", 
+     RowBox[{"\[Delta]R", "^", "2"}]}]]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Uncertainty", " ", "of", " ", "the", " ", "resistance", " ", "in", " ", 
+    "Ohms"}], "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.6829462638900056`*^9, 3.682946287594904*^9}, {
+  3.682946327729061*^9, 3.6829463827326*^9}, {3.6829464367192373`*^9, 
+  3.682946518925811*^9}}],
+
+Cell[BoxData["1.4`"], "Output",
+ CellChangeTimes->{3.682946525644787*^9, 3.682946990949323*^9}],
+
+Cell[BoxData["0.14142135623730953`"], "Output",
+ CellChangeTimes->{3.682946525644787*^9, 3.682946990949323*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Vbulb", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.05", ",", " ", "0.1", ",", " ", "0.15", ",", " ", "0.2", ",", " ", 
+       "0.25", ",", " ", "0.3", ",", " ", "0.35", ",", " ", "0.4", ",", " ", 
+       "0.5", ",", " ", "0.6", ",", " ", "0.7", ",", " ", "0.8", ",", " ", 
+       "0.9", ",", " ", "1.0", ",", " ", "1.1", ",", " ", "1.2", ",", " ", 
+       "1.4", ",", " ", "1.6", ",", " ", "1.8", ",", " ", "2.0"}], "}"}]}], 
+    ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Voltage", " ", "across", " ", "the", " ", "bulb", " ", "in", " ", 
+     "Volts"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Ibulb", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "0.048", ",", " ", "0.093", ",", " ", "0.129", ",", " ", "0.161", ",", 
+       " ", "0.187", ",", " ", "0.209", ",", " ", "0.228", ",", " ", "0.244", 
+       ",", " ", "0.271", ",", " ", "0.291", ",", " ", "0.307", ",", " ", 
+       "0.320", ",", " ", "0.332", ",", " ", "0.343", ",", " ", "0.353", ",", 
+       " ", "0.362", ",", " ", "0.381", ",", " ", "0.399", ",", " ", "0.415", 
+       ",", " ", "0.430"}], "}"}]}], ";"}], 
+   RowBox[{"(*", 
+    RowBox[{
+    "Current", " ", "through", " ", "the", " ", "bulb", " ", "in", " ", 
+     "Amps"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"VvsI", " ", "=", " ", 
+    RowBox[{"Thread", "[", 
+     RowBox[{"{", 
+      RowBox[{"Ibulb", ",", " ", "Vbulb"}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.682946534785795*^9, 3.682946814684991*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0.048`", ",", "0.05`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.093`", ",", "0.1`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.129`", ",", "0.15`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.161`", ",", "0.2`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.187`", ",", "0.25`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.209`", ",", "0.3`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.228`", ",", "0.35`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.244`", ",", "0.4`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.271`", ",", "0.5`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.291`", ",", "0.6`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.307`", ",", "0.7`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.32`", ",", "0.8`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.332`", ",", "0.9`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.343`", ",", "1.`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.353`", ",", "1.1`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.362`", ",", "1.2`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.381`", ",", "1.4`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.399`", ",", "1.6`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.415`", ",", "1.8`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.43`", ",", "2.`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6829468248571053`*^9, 3.6829469909649487`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Rbulb", " ", "=", " ", 
+    RowBox[{"Vbulb", "/", "Ibulb"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Resistance", " ", "of", " ", "the", " ", "Bulb", " ", "in", " ", "Ohms"}],
+    "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Pbulb", " ", "=", " ", 
+    RowBox[{"Ibulb", "*", "Vbulb"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Power", " ", "of", " ", "the", " ", "bulb", " ", "in", " ", "Watts"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BulbData", " ", "=", " ", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "Vbulb", ",", " ", "Ibulb", ",", " ", "Rbulb", ",", " ", "Pbulb"}], 
+     "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"NumberForm", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Grid", "[", 
+    RowBox[{
+     RowBox[{"Prepend", "[", 
+      RowBox[{"BulbData", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<Voltage (V)\>\"", ",", " ", "\"\<Current (A)\>\"", ",", " ", 
+         "\"\<Resistance (\[CapitalOmega])\>\"", ",", " ", 
+         "\"\<Power (W)\>\""}], "}"}]}], "]"}], ",", " ", 
+     RowBox[{"Frame", "\[Rule]", " ", "All"}]}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"Infinity", ",", " ", "3"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.682947053201133*^9, 3.682947149110221*^9}, {
+   3.6829472082368827`*^9, 3.682947286770336*^9}, {3.6829473229274025`*^9, 
+   3.6829473447716446`*^9}, 3.6829473815224743`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {"\<\"Voltage (V)\"\>", "\<\"Current (A)\"\>", "\<\"Resistance (\
+\[CapitalOmega])\"\>", "\<\"Power (W)\"\>"},
+     {
+      InterpretationBox["\<\"0.050\"\>",
+       0.05,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.048\"\>",
+       0.048,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.042\"\>",
+       1.0416666666666667`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.002\"\>",
+       0.0024000000000000002`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.100\"\>",
+       0.1,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.093\"\>",
+       0.093,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.075\"\>",
+       1.075268817204301,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.009\"\>",
+       0.009300000000000001,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.150\"\>",
+       0.15,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.129\"\>",
+       0.129,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.163\"\>",
+       1.1627906976744184`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.019\"\>",
+       0.01935,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.200\"\>",
+       0.2,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.161\"\>",
+       0.161,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.242\"\>",
+       1.2422360248447206`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.032\"\>",
+       0.0322,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.250\"\>",
+       0.25,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.187\"\>",
+       0.187,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.337\"\>",
+       1.3368983957219251`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.047\"\>",
+       0.04675,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.300\"\>",
+       0.3,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.209\"\>",
+       0.209,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.435\"\>",
+       1.4354066985645932`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.063\"\>",
+       0.06269999999999999,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.350\"\>",
+       0.35,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.228\"\>",
+       0.228,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.535\"\>",
+       1.5350877192982453`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.080\"\>",
+       0.0798,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.400\"\>",
+       0.4,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.244\"\>",
+       0.244,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.639\"\>",
+       1.639344262295082,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.098\"\>",
+       0.0976,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.500\"\>",
+       0.5,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.271\"\>",
+       0.271,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.845\"\>",
+       1.8450184501845017`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.136\"\>",
+       0.1355,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.600\"\>",
+       0.6,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.291\"\>",
+       0.291,
+       AutoDelete->True], 
+      InterpretationBox["\<\"2.062\"\>",
+       2.061855670103093,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.175\"\>",
+       0.17459999999999998`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.700\"\>",
+       0.7,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.307\"\>",
+       0.307,
+       AutoDelete->True], 
+      InterpretationBox["\<\"2.280\"\>",
+       2.2801302931596092`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.215\"\>",
+       0.21489999999999998`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.800\"\>",
+       0.8,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.320\"\>",
+       0.32,
+       AutoDelete->True], 
+      InterpretationBox["\<\"2.500\"\>",
+       2.5,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.256\"\>",
+       0.256,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"0.900\"\>",
+       0.9,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.332\"\>",
+       0.332,
+       AutoDelete->True], 
+      InterpretationBox["\<\"2.711\"\>",
+       2.710843373493976,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.299\"\>",
+       0.2988,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"1.000\"\>",
+       1.,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.343\"\>",
+       0.343,
+       AutoDelete->True], 
+      InterpretationBox["\<\"2.915\"\>",
+       2.9154518950437316`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.343\"\>",
+       0.343,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"1.100\"\>",
+       1.1,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.353\"\>",
+       0.353,
+       AutoDelete->True], 
+      InterpretationBox["\<\"3.116\"\>",
+       3.11614730878187,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.388\"\>",
+       0.38830000000000003`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"1.200\"\>",
+       1.2,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.362\"\>",
+       0.362,
+       AutoDelete->True], 
+      InterpretationBox["\<\"3.315\"\>",
+       3.314917127071823,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.434\"\>",
+       0.43439999999999995`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"1.400\"\>",
+       1.4,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.381\"\>",
+       0.381,
+       AutoDelete->True], 
+      InterpretationBox["\<\"3.675\"\>",
+       3.674540682414698,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.533\"\>",
+       0.5334,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"1.600\"\>",
+       1.6,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.399\"\>",
+       0.399,
+       AutoDelete->True], 
+      InterpretationBox["\<\"4.010\"\>",
+       4.010025062656641,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.638\"\>",
+       0.6384000000000001,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"1.800\"\>",
+       1.8,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.415\"\>",
+       0.415,
+       AutoDelete->True], 
+      InterpretationBox["\<\"4.337\"\>",
+       4.337349397590362,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.747\"\>",
+       0.747,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"2.000\"\>",
+       2.,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.430\"\>",
+       0.43,
+       AutoDelete->True], 
+      InterpretationBox["\<\"4.651\"\>",
+       4.651162790697675,
+       AutoDelete->True], 
+      InterpretationBox["\<\"0.860\"\>",
+       0.86,
+       AutoDelete->True]}
+    },
+    AutoDelete->False,
+    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Grid"],
+  NumberForm[#, {
+    DirectedInfinity[1], 3}]& ]], "Output",
+ CellChangeTimes->{3.6829471531884084`*^9, 3.6829472910203753`*^9, 
+  3.6829473855538163`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"RvsI", " ", "=", " ", 
+     RowBox[{"Thread", "[", 
+      RowBox[{"{", 
+       RowBox[{"Ibulb", ",", " ", "Rbulb"}], "}"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PvsI", " ", "=", " ", 
+     RowBox[{"Thread", "[", 
+      RowBox[{"{", 
+       RowBox[{"Ibulb", ",", " ", "Pbulb"}], "}"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"VvsI", ",", " ", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", " ", "\"\<Plot of Voltage vs. Current\>\""}], 
+     ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Current (A)\>\"", ",", " ", "\"\<Voltage (V)\>\""}], 
+       "}"}]}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"RvsI", ",", " ", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", " ", "\"\<PLot of Resistance vs. Current\>\""}], 
+     ",", " ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", "  ", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Current (A)\>\"", ",", " ", 
+        "\"\<Resistance (\[CapitalOmega])\>\""}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"PvsI", ",", " ", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", " ", "\"\<Plot of Power vs. Current\>\""}], ",", 
+     "  ", 
+     RowBox[{"AxesLabel", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Current (A)\>\"", ",", " ", "\"\<Power (W)\>\""}], 
+       "}"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.682947457633569*^9, 3.6829475353072023`*^9}, {
+  3.6829475691517143`*^9, 3.6829476218559976`*^9}, {3.6829477061548038`*^9, 
+  3.68294787925241*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAQAWIQ/asua0/J5BX2s2aCwEp7Ju12sZvntkP5O+0Deqfn
+CTUfsDcGg8P2578HP146+whU/qR9GJ/uprnvj9szgMEFe4jyU1D1l+1Plu2b
+L6V/1j4NDK7Zc6yRiUqxPg/Vf9P+0yXfJIGIi1D9D+wtt5wA6rgE1f/Y/uY5
+kIWXofqf2VeLrHN/WHUFqv+lfXHGxLc19lftz54BgTf2B08tdN32+SrUvA/2
+Kdb3/XunX4Oq/2gft8uTh0n7OtT8z/Z/Vn4EuuAG1Pxv9h+WH/M277wJVf/T
+vv/QV42Y/ltQ8//Yt74O3CHXehtqPoMDAGR/mWs=
+      "]]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Current (A)\"", TraditionalForm], 
+    FormBox["\"Voltage (V)\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"Plot of Voltage vs. Current\"", TraditionalForm],
+  PlotRange->{{0, 0.43}, {0, 2.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.6829475371196947`*^9, 3.6829476256529436`*^9, {3.682947783140864*^9, 
+   3.682947811750883*^9}, 3.6829478810805855`*^9}]
+}, Open  ]],
+
+Cell["\<\
+The plot above describes the relationship between voltage and current in the \
+light bulb. It resembles an exponential curve. \
+\>", "Text",
+ CellChangeTimes->{{3.682947917878338*^9, 3.6829480707724094`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAQAWIQ/asua0/J5BX2q1eBwAd7Ju12sZvnttubXHQR9jX5
+aB/QOz1PqPmA/bI1mtmnZn2yP/89+PHS2UfspT6cfGj04LN9GJ/uprnvj9un
+mFZPep/81R6i/JS9x9Y1zLnfv9mfLNs3X0r/rP0vjnfKO/p/2HOskYlKsT5v
+/0dkOs9Bq1/2ny75JglEXLS/8pFB0Kj1r73llhNAHZfsLwY26q+rY3C4eQ5k
+4WX7oFe1n7fYMjlUi6xzf1h1xZ4BDFgcijMmvq2xv2qv8bB32bn1rA4HTy10
+3fb5qr2TYVHhjSB2hxTr+/6906/ZFz15uvjeWw6HuF2ePEza1+0dT/m6fm7h
+cviz8iPQBTfsI8OvTS1N5XX4sPyYt3nnTfslDBOZXLgEHPoPfdWI6b9lH/L8
+ulxRpKBD6+vAHXKtt+2Xg8NDyAEAObSeLQ==
+      "]]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Current (A)\"", TraditionalForm], 
+    FormBox["\"Resistance (\[CapitalOmega])\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"PLot of Resistance vs. Current\"", TraditionalForm],
+  PlotRange->{{0, 0.43}, {0, 4.651162790697675}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.6829475371196947`*^9, 3.6829476256529436`*^9, {3.682947783140864*^9, 
+   3.682947811750883*^9}, 3.682947881096199*^9}],
+
+Cell["\<\
+The plot above describes the relationship between resistance and current in \
+the light bulb. It resembles an exponential curve.\
+\>", "Text",
+ CellChangeTimes->{{3.682948088632191*^9, 3.682948110945195*^9}, {
+  3.6829483937042885`*^9, 3.682948401360712*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGAQAWIQ/asua0/J5BX2SUahBlork+2ZtNvFbp7bbn++49K9
+B9zN9gG90/OEmg/YH7uztaXmwmT789+DHy+dfcQeIrDAPoxPd9Pc98eh9HJ7
+iPJT9op9pYXSvBvsT5btmy+lf9Y+ss3i2tHcLfYca2SiUqzP27N/EPMI+LPD
+/tMl3ySBiItQ+qC95ZYTQB2X7F1ufPjiFXnM/uY5kIWX7f+0f7l9vfG0fbXI
+OveHVVfs/6z8CNRxwb44Y+LbGvur9oz3mDi75C/bHzy10HXb56twOsX6vn/v
+9Gv276Oc7F7cvGEft8uTh0n7ur1tZcQK07O3oebcsP/7rfTBHMGH9h+WH/M2
+77xpHwV27xP7/kNfNWL6b9k3TnXuznn+3L71deAOudbbUPq1PQAlFKmz
+      "]]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"Current (A)\"", TraditionalForm], 
+    FormBox["\"Power (W)\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"Plot of Power vs. Current\"", TraditionalForm],
+  PlotRange->{{0, 0.43}, {0, 0.86}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.6829475371196947`*^9, 3.6829476256529436`*^9, {3.682947783140864*^9, 
+   3.682947811750883*^9}, 3.68294788112745*^9}],
+
+Cell["\<\
+The plot above describes the relationship between power and current in the \
+light bulb. It resembles an exponential curve.\
+\>", "Text",
+ CellChangeTimes->{{3.682948118476616*^9, 3.682948138633321*^9}, {
+  3.6829484029076223`*^9, 3.6829484144860086`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Section",
+ CellChangeTimes->{{3.6829484314244804`*^9, 3.6829484327682624`*^9}}],
+
+Cell["\<\
+From this experiment, we can see that many things change in a circuit when we \
+increase the voltage. By looking in the data table, we can tell that the \
+resistance of the light bulb increases as voltage does. As the power \
+increases and the voltage increases, the light bulb gets hotter. The maximum \
+power dissipated was 0.860 W. This was consistent with our DMM measurements \
+because at two volts we measured 0.43 A (P =  IV = 0.43*2  = 0.86). \
+\>", "Text",
+ CellChangeTimes->{{3.682948438721492*^9, 3.6829484484404907`*^9}, {
+  3.682948610350396*^9, 3.682948750759816*^9}, {3.6829488185738473`*^9, 
+  3.6829488825752926`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{838, 962},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+PrintingStartingPageNumber->1,
+PageHeaders->{{None, None, 
+   Cell[
+    TextData[{"Priyanka", " ", "Makin"}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {None, None, 
+   Cell[
+    TextData[{"Priyanka", " ", "Makin"}], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{False, False},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->True,
+"FirstPageFace"->Right,
+"FirstPageFooter"->False,
+"FirstPageHeader"->True},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 94, 1, 31, "Input"],
+Cell[CellGroupData[{
+Cell[677, 25, 196, 4, 254, "Title"],
+Cell[CellGroupData[{
+Cell[898, 33, 101, 1, 70, "Section"],
+Cell[1002, 36, 560, 9, 87, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1599, 50, 107, 1, 70, "Section"],
+Cell[CellGroupData[{
+Cell[1731, 55, 1455, 41, 136, "Input"],
+Cell[3189, 98, 95, 1, 31, "Output"],
+Cell[3287, 101, 111, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3435, 107, 1610, 36, 172, "Input"],
+Cell[5048, 145, 1461, 43, 92, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6546, 193, 1501, 40, 132, "Input"],
+Cell[8050, 235, 7526, 273, 370, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15613, 513, 1706, 46, 192, "Input"],
+Cell[17322, 561, 1961, 45, 236, "Output"]
+}, Open  ]],
+Cell[19298, 609, 218, 4, 49, "Text"],
+Cell[19519, 615, 2112, 47, 231, "Output"],
+Cell[21634, 664, 269, 5, 49, "Text"],
+Cell[21906, 671, 2033, 46, 237, "Output"],
+Cell[23942, 719, 266, 5, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24245, 729, 99, 1, 70, "Section"],
+Cell[24347, 732, 645, 10, 87, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
